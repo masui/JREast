@@ -1,0 +1,272 @@
+\documentclass[a4j,11pt,twocolumn]{jarticle}
+\usepackage{graphicx,layout}
+% \usepackage{here}
+
+\makeatletter
+
+\def\@pageno{20}
+
+\def\section{\@startsection {section}{1}{\z@}{-3.5ex plus -1ex minus -.2ex}{2.3ex plus .2ex}{\normalsize\bf}}
+
+\def\@maketitle{
+  \newpage\null\vskip 1em%
+  \begin{center}%
+	\let\footnote\thanks
+	{\Large \bf \@jtitle \par}
+	{\Large \bf \@etitle \par}
+	\vskip 1.5em
+ 	{\large \bf \begin{tabular}[t]{c}\@jauthor \end{tabular}\par}
+	\vskip 1.0em
+	%\begin{tabular}[t]{c} \@jcontact \end{tabular}\par
+	%\vskip 1.5em%
+	%{\unvbox\@jabstractbox}
+	%\vskip2em
+% English title
+	%{\Large \bf \@etitle \par}
+	%\vskip 1.5em
+	{\large \begin{tabular}[t]{c}\@eauthor \end{tabular}\par}
+	\vskip .5em
+	{\small \begin{tabular}[t]{c}\@econtact \end{tabular}\par}
+	\vskip 1.5em
+	{\unvbox\@eabstractbox}\par
+	\par \vskip .5em
+  \end{center}
+  {\small\bf キーワード: \@jkeywords}\par
+  {\small\bf\sf Keywords: \@ekeywords}
+  \par \vskip 1.5em
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%	Definitions
+%
+% Japanese & English　titleｓ
+%
+\def\jtitle#1{\gdef\@jtitle{#1}}
+\def\@jtitle#{\mkt\@warning\jtitle}
+\def\etitle#1{\gdef\@etitle{#1}}
+\def\@etitle{\mkt@warning\etitle}
+
+\def\jkeywords#1{\gdef\@jkeywords{#1}}
+\def\@jkeywords#{\mkt\@warning\jkeywords}
+\def\ekeywords#1{\gdef\@ekeywords{#1}}
+\def\@ekeywords{\mkt@warning\ekeywords}
+%
+% Japanese & English authors
+%
+\long\def\jauthor#1{\long\gdef\@jauthor{#1}}
+\def\@jauthor{\mkt@warning\jauthor}
+\long\def\eauthor#1{\long\gdef\@eauthor{#1}}
+\def\@eauthor{\mkt@warning\eauthor}
+%
+%  Japanese & English contact address
+%
+\long\def\jcontact#1{\long\gdef\@jcontact{#1}}
+\def\@jcontact{\mkt@warning\jcontact}
+\long\def\econtact#1{\long\gdef\@econtact{#1}}
+\def\@econtact{\mkt@warning\econtact}
+
+% Japanese & English abstracts
+
+\def\jabstractname{あらまし}
+\def\eabstractname{}
+
+\newbox\@jabstractbox \global\setbox\@jabstractbox\box\voidb@x
+\newbox\@eabstractbox \global\setbox\@eabstractbox\box\voidb@x
+
+\def\jabstract{%
+   \global\setbox\@jabstractbox\vbox\bgroup
+      \hsize\textwidth \@parboxrestore
+      {\bfseries \jabstractname}  \parindent=1zw\relax}
+\def\endjabstract{\egroup}
+
+\def\eabstract{%
+      \small
+   \global\setbox\@eabstractbox\vbox\bgroup
+      \hsize\textwidth \@parboxrestore
+      {\bfseries \eabstractname}  \parindent=1zw\relax}
+\def\endeabstract{\egroup}
+%%%%%%%%%%%%%%%%%%%%%%%
+\makeatother
+
+\def\SP{スマートフォン}
+
+\pagestyle{plain}
+\setcounter{page}{25}
+
+\long\def\comment#1{}
+
+\begin{document}
+
+\def\figwidth{7.5cm}
+
+\jtitle{JRとディスプレイ}
+\jauthor{増井 俊之 (慶應義塾大学 環境情報学部)}
+\jkeywords{実世界インタフェース, 実世界GUI, デジタルサイネージ, {\SP}, RFID}
+\ekeywords{real-world GUI, digital signage, smart phones, RFID}
+\begin{eabstract}
+Although various digital signage systems are set up in many train stations and
+other public spaces, they are usually used for presenting general information
+for the people around them,
+and they usually cannot provide detailed information for individual users.
+We propose controlling digital signages with people's smart phones
+like controlling menus and scroll bars with a mouse on a personal computer.
+We believe that the ``\textit{real-world GUI}'' will be the key to
+practical use of digital signages in public spaces.
+\end{eabstract}
+
+\etitle{JR and ubiquitous display devices}
+\eauthor{Toshiyuki Masui}
+\econtact{Faculty of Environment and Information Studies, Keio University}
+
+\maketitle
+
+最近のJRの電車や駅はあらゆるところに大きな液晶ディスプレイが置いてあり、
+着実にIT化の道を邁進しているようにも見えるのが結構であるが、
+現状では充分有効に利用されていないところも多いように思われる。
+
+\paragraph{自動販売機の謎}
+
+ディスプレイだけ大きくても仕方がない
+欲しいものが楽に変えるのが大事
+欲しいものがない
+ドリンクを取り出しにくい
+のにディスプレイだけ豪華なのはかえって不愉快になる
+
+自分の好きなドリンクだけすぐ買えるようになっていてもいいのに
+
+スマホと自販機で自分の欲しいものをすぐ買うインタフェースができそう
+いろんな種類を売ることができるかも
+
+
+\paragraph{現在の停車駅表示}
+
+最近はドアの上に2枚の液晶ディスプレイが置いてある車輛が多いが、
+停車中に現在駅を表示してくれないものがとても多い。
+乗客にとっては、
+今どこにいるのか知ることは最重要なのに不思議である。
+
+\paragraph{サイネージの活用}
+
+大型のデジタルサイネージが駅などに増えているが、
+単なる広告がほとんどであまり有益でない。
+対話的に使えるものは多くないし、個人適応してくれるものは無いようである。
+トイレやコインロッカー案内が一番多いらしいが、
+自分がいきたい所への道順を教えてくれてもよさそうなものである。
+もしくは自分が買いたい本をそばで売ってるとか教えてくれたり
+
+サイネージにスマホを当てると
+	トイレ
+	行先
+などが表示されると便利であろう。
+おそらく、地図じゃなくて矢印だけ出ると良いかもしれない。
+
+\paragraph{駅名や時刻表看板}
+
+駅名看板や時刻表がディスプレイになっていれば
+現在時刻付近を大きく表示できるし
+次の電車を表示する看板もまだまだ改善の余地があるだろう。
+
+公共画面(サイネージ)とパーソナルな機器(スマホ)を
+うまく連携させる方法がいい
+
+そのためには
+ケータイに搭載されているFelica機能やNFCリーダ機能が利用できる。
+
+\paragraph{スマホ連係}
+
+現在の情報を表示するサイネージのかわりに、
+現在の状況を表示するWebサイトがあってもいいのでは
+
+jreast.com/鎌倉駅 みたいなサイトで常に最新情報を表示してればいい
+
+タッチするとそこに飛ぶのでもいい
+
+
+--------
+
+有益でないディスプレイが沢山有ると、
+Webのように
+誰もディスプレイを見なくなってしまうので勿体ない
+
+
+インタフェースやサービスについて研究が必要だろう。
+
+課題
+
+- 公共ディスプレイとケータイディスプレイの連係
+  パーソナライズ
+- これまでディスプレイが使われていなかった場所でのディスプレイ応用
+  超新型自販機
+  売店がコンビニになるかも
+- 現在のディスプレイの改善
+  電車の中のとかサイネージとか
+
+NFC通信
+あらゆる車輛が固有情報を発信するのもよし
+
+\scriptsize
+\bibliographystyle{plain}
+\bibliography{article}
+
+\end{document}
+
+
+最近のJRの電車や駅はあらゆるところに大きな液晶ディスプレイが置いてあり、
+着実にIT化の道を邁進しているようにも見えるのが結構であるが、
+現状では充分有効に利用されていないところも多いように思われる。
+
+* 自動販売機の謎
+
+ディスプレイだけ大きくても仕方がない
+欲しいものが楽に変えるのが大事
+欲しいものがない
+ドリンクを取り出しにくい
+のにディスプレイだけ豪華なのはかえって不愉快になる
+
+自分の好きなドリンクだけすぐ買えるようになっていてもいいのに
+
+* 現在の停車駅が表示されていない
+
+最近はドアの上に2枚の液晶ディスプレイが置いてある車輛が多いが、
+停車中に現在駅を表示してくれないものがとても多い。
+今どこにいるのか知ることは最重要なのに不思議である。
+
+* サイネージで個人情報が利用できない
+
+大型のデジタルサイネージが駅などに増えているが、
+単なる広告がほとんどであまり有益でない。
+対話的に使えるものは多くないし、個人適応してくれるものは無いようである。
+トイレやコインロッカー案内が一番多いらしいが、
+自分がいきたい所への道順を教えてくれてもよさそうなものである。
+もしくは自分が買いたい本をそばで売ってるとか教えてくれたり
+
+サイネージにスマホを当てると
+	トイレ
+	行先
+などが表示されると便利であろう。
+おそらく、地図じゃなくて矢印だけ出ると良いかもしれない。
+
+----
+
+有益でないディスプレイが沢山有ると
+Webのように
+誰もディスプレイを見なくなってしまうので勿体ない
+
+公共画面(サイネージ)とパーソナルな機器(スマホ)を
+うまく連携させる方法がいい
+
+そのためには
+ケータイに搭載されているFelica機能やNFCリーダ機能が利用できる。
+
+インタフェースやサービスについて研究が必要だろう。
+
+
+
+
+
+
+
+
+
+
+
